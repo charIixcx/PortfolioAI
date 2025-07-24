@@ -1,0 +1,123 @@
+/* Global styles for the post‑anthropocene portfolio.  
+   Define CSS variables for colours, fonts and spacing to ensure a consistent look 
+   and feel. By avoiding pure black and pure white, we follow dark‑mode 
+   accessibility guidelines【826091645669512†L52-L112】.  */
+
+:root {
+  --color-bg: #0a0f1d;          /* dark blue‑black background instead of pure black */
+  --color-surface: #101726;      /* slightly lighter surface for cards */
+  --color-primary: #8e8afa;      /* lavender primary accent reminiscent of neon lights */
+  --color-secondary: #58c1df;    /* turquoise secondary accent */
+  --color-text: #d9dbe8;         /* light gray text for high contrast */
+  --color-muted: #7983a8;        /* muted text for secondary information */
+  --color-border: #273049;       /* border colour for cards and separators */
+  --font-title: 'Orbitron', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'Source Code Pro', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+  color: var(--color-secondary);
+}
+
+section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+/* Utilities */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Focus indicator for accessibility */
+*:focus {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+/* Custom cursor effect: enlarge pointer on interactive elements */
+.interactive {
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+}
+
+.interactive:hover {
+  transform: scale(1.02);
+}
+
+/* -----------------------------------------------------------------------
+   Custom cursor styles
+   The custom cursor is a circular element that follows the pointer.
+   It uses CSS variables for colours and applies blend modes and shadows
+   to evoke a futuristic holographic pointer. When hovering over elements
+   tagged with data-cursor-hover the cursor enlarges to signal interactivity.
+------------------------------------------------------------------------- */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  border-radius: 50%;
+  border: 2px solid var(--color-secondary);
+  background: radial-gradient(circle at center, rgba(88, 193, 223, 0.6), rgba(142, 138, 250, 0.3));
+  box-shadow: 0 0 10px rgba(88, 193, 223, 0.6), 0 0 20px rgba(142, 138, 250, 0.4);
+  mix-blend-mode: screen;
+  z-index: 999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, width 0.15s ease, height 0.15s ease;
+}
+
+.custom-cursor.hovering {
+  width: 50px;
+  height: 50px;
+  border-width: 3px;
+}

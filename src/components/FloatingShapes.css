@@ -1,0 +1,22 @@
+/* Decorative floating shapes inspired by futuristic web design trends.
+   Shapes use translucent gradient fills and blur effects to blend
+   naturally into the background. They are positioned absolutely within
+   their parent container and animated vertically with Framer Motion. */
+
+.floating-shapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(142, 138, 250, 0.3), rgba(88, 193, 223, 0.15));
+  filter: blur(20px);
+  mix-blend-mode: screen;
+}
